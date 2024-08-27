@@ -3,18 +3,18 @@ import cohere
 from telegram import Update
 from telegram.ext import Application, CommandHandler, MessageHandler, filters, ContextTypes
 
-# Ваши API ключи
-cohere_api_key = 'pqSYW4y3xM6cksUIedML7Lt02wvOSjYYkzj8Cbp3'
+
+cohere_api_key = '********'
 co = cohere.Client(cohere_api_key)
 
-telegram_token = '7392676779:AAEQkIzS6ny10hH_YmObkwbPzzFqgtoPrx0'
+telegram_token = '*********'
 
-# Команда /start
+
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    """Отправляет сообщение при команде /start."""
+
     await update.message.reply_text('Привет! Я бот, использующий Cohere API. Напишите мне что-нибудь, и я отвечу!')
 
-# Генерация текста
+
 async def generate_text(update: Update, context: ContextTypes.DEFAULT_TYPE):
     user_message = update.message.text
 
@@ -33,7 +33,7 @@ async def generate_text(update: Update, context: ContextTypes.DEFAULT_TYPE):
         print(f"Произошла ошибка: {e}")
         await update.message.reply_text("Извините, произошла ошибка при обработке вашего запроса.")
 
-# Основная функция
+
 def main():
     try:
         application = Application.builder().token(telegram_token).build()
